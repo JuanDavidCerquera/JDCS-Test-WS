@@ -19,36 +19,98 @@ function loadData() {
             "salida": $("#fecha-salida").val(),
             "llegada": $("#fecha-salida").val()
         }
+
+    }
+
+    var jsondata = JSON.stringify(data)
+    eleccioncabina = $("#tipo-cabina").val();
+    console.log(eleccioncabina);
+
+    if (eleccioncabina === "business") {
+        $.ajax({
+            url: "http://localhost:9000/Session3/1v/api/countries/flight/filter",
+            method: "POST",
+            dataType: "json",
+            contentType: "application/json",
+            data: jsondata,
+            success: function (response) {
+                console.log(response.data);
+                var html = "";
+                var data = response.data;
+                data.forEach(function (item) {
+                    html +=
+                        `<tr>
+                        <td>` + item.origen + `</td>
+                        <td>` + item.destino + `</td>
+                        <td>` + item.fecha + `</td>
+                        <td>` + item.hora + `</td>
+                        <td>` + item.numerovuelo + `</td>
+                        <td>` + parseInt(item.preciocabina * 1.30) + `</td>
+                        <td><button  class="ButtonEditar buttonLista" onclick="iditemSalida(${item.id})">Seleccionar</td>
+                        </tr>`;
+                });
+                loadData2();
+                $("#tabla1").html(html);
+            }
+        })
+    } else if (eleccioncabina === "primeraclase") {
+        $.ajax({
+            url: "http://localhost:9000/Session3/1v/api/countries/flight/filter",
+            method: "POST",
+            dataType: "json",
+            contentType: "application/json",
+            data: jsondata,
+            success: function (response) {
+                console.log(response.data);
+                var html = "";
+                var data = response.data;
+                data.forEach(function (item) {
+                    html +=
+                        `<tr>
+                        <td>` + item.origen + `</td>
+                        <td>` + item.destino + `</td>
+                        <td>` + item.fecha + `</td>
+                        <td>` + item.hora + `</td>
+                        <td>` + item.numerovuelo + `</td>
+                        <td>` + parseInt((item.preciocabina * 1.35) * 1.30) + `</td>
+                        <td><button  class="ButtonEditar buttonLista" onclick="iditemSalida(${item.id})">Seleccionar</td>
+                        </tr>`;
+                });
+                loadData2();
+                $("#tabla1").html(html);
+            }
+        })
+    } else {
+        $.ajax({
+            url: "http://localhost:9000/Session3/1v/api/countries/flight/filter",
+            method: "POST",
+            dataType: "json",
+            contentType: "application/json",
+            data: jsondata,
+            success: function (response) {
+                console.log(response.data);
+                var html = "";
+                var data = response.data;
+                data.forEach(function (item) {
+                    html +=
+                        `<tr>
+                        <td>` + item.origen + `</td>
+                        <td>` + item.destino + `</td>
+                        <td>` + item.fecha + `</td>
+                        <td>` + item.hora + `</td>
+                        <td>` + item.numerovuelo + `</td>
+                        <td>` + item.preciocabina + `</td>
+                        <td><button  class="ButtonEditar buttonLista" onclick="iditemSalida(${item.id})">Seleccionar</td>
+                        </tr>`;
+                });
+                loadData2();
+                $("#tabla1").html(html);
+            }
+        })
     }
 
 
-    var jsondata = JSON.stringify(data)
-    $.ajax({
-        url: "http://localhost:9000/Session3/1v/api/countries/flight/filter",
-        method: "POST",
-        dataType: "json",
-        contentType: "application/json",
-        data: jsondata,
-        success: function (response) {
-            console.log(response.data);
-            var html = "";
-            var data = response.data;
-            data.forEach(function (item) {
-                html +=
-                    `<tr>
-                    <td>` + item.origen + `</td>
-                    <td>` + item.destino + `</td>
-                    <td>` + item.fecha + `</td>
-                    <td>` + item.hora + `</td>
-                    <td>` + item.numerovuelo + `</td>
-                    <td>` + item.preciocabina + `</td>
-                    <td><button  class="ButtonEditar buttonLista" onclick="iditemSalida(${item.id})">Seleccionar</td>
-                    </tr>`;
-            });
-            loadData2();
-            $("#tabla1").html(html);
-        }
-    })
+
 }
 
 function iditemSalida(id) {
@@ -78,35 +140,94 @@ function loadData2() {
             "llegada": $("#fecha-regreso").val()
         }
     }
-
-
-
     var jsondata = JSON.stringify(data)
-    $.ajax({
-        url: "http://localhost:9000/Session3/1v/api/countries/flight/filter",
-        method: "POST",
-        dataType: "json",
-        contentType: "application/json",
-        data: jsondata,
-        success: function (response) {
-            console.log(response.data);
-            var html = "";
-            var data = response.data;
-            data.forEach(function (item) {
-                html +=
-                    `<tr>
-                    <td>` + item.origen + `</td>
-                    <td>` + item.destino + `</td>
-                    <td>` + item.fecha + `</td>
-                    <td>` + item.hora + `</td>
-                    <td>` + item.numerovuelo + `</td>
-                    <td>` + item.preciocabina + `</td>
-                    <td><button  class="ButtonEditar buttonLista" onclick="iditemRetorno(${item.id})">Seleccionar</td>
-                    </tr>`;
-            });
-            $("#tabla2").html(html);
-        }
-    })
+    eleccioncabina = $("#tipo-cabina").val();
+    console.log(eleccioncabina);
+    if (eleccioncabina === "primeraclase") {
+
+        $.ajax({
+            url: "http://localhost:9000/Session3/1v/api/countries/flight/filter",
+            method: "POST",
+            dataType: "json",
+            contentType: "application/json",
+            data: jsondata,
+            success: function (response) {
+                console.log(response.data);
+                var html = "";
+                var data = response.data;
+                data.forEach(function (item) {
+                    html +=
+                        `<tr>
+                        <td>` + item.origen + `</td>
+                        <td>` + item.destino + `</td>
+                        <td>` + item.fecha + `</td>
+                        <td>` + item.hora + `</td>
+                        <td>` + item.numerovuelo + `</td>
+                        <td>` + parseInt((item.preciocabina * 1.35) * 1.30) + `</td>
+                        <td><button  class="ButtonEditar buttonLista" onclick="iditemRetorno(${item.id})">Seleccionar</td>
+                        </tr>`;
+                });
+                $("#tabla2").html(html);
+            }
+        })
+    } else if (eleccioncabina === "business") {
+
+        $.ajax({
+            url: "http://localhost:9000/Session3/1v/api/countries/flight/filter",
+            method: "POST",
+            dataType: "json",
+            contentType: "application/json",
+            data: jsondata,
+            success: function (response) {
+                console.log(response.data);
+                var html = "";
+                var data = response.data;
+                data.forEach(function (item) {
+                    html +=
+                        `<tr>
+                        <td>` + item.origen + `</td>
+                        <td>` + item.destino + `</td>
+                        <td>` + item.fecha + `</td>
+                        <td>` + item.hora + `</td>
+                        <td>` + item.numerovuelo + `</td>
+                        <td>` + parseInt(item.preciocabina * 1.30) + `</td>
+                        <td><button  class="ButtonEditar buttonLista" onclick="iditemRetorno(${item.id})">Seleccionar</td>
+                        </tr>`;
+                });
+                $("#tabla2").html(html);
+            }
+        })
+    } else {
+
+        $.ajax({
+            url: "http://localhost:9000/Session3/1v/api/countries/flight/filter",
+            method: "POST",
+            dataType: "json",
+            contentType: "application/json",
+            data: jsondata,
+            success: function (response) {
+                console.log(response.data);
+                var html = "";
+                var data = response.data;
+                data.forEach(function (item) {
+                    html +=
+                        `<tr>
+                        <td>` + item.origen + `</td>
+                        <td>` + item.destino + `</td>
+                        <td>` + item.fecha + `</td>
+                        <td>` + item.hora + `</td>
+                        <td>` + item.numerovuelo + `</td>
+                        <td>` + item.preciocabina + `</td>
+                        <td><button  class="ButtonEditar buttonLista" onclick="iditemRetorno(${item.id})">Seleccionar</td>
+                        </tr>`;
+                });
+                $("#tabla2").html(html);
+            }
+        })
+    }
+
+
+
 }
 
 function iditemRetorno(id) {
@@ -131,6 +252,9 @@ function ruta() {
 }
 
 function cambioVista() {
+    eleccioncabina = $("#tipo-cabina").val();
+    console.log(eleccioncabina);
+    localStorage.setItem("tipocabina", eleccioncabina)
     localStorage.setItem("numeroPasajeros", $("#pasajeros").val())
     console.log(localStorage.getItem("numeroPasajeros"))
     window.location.href = "form2.html";

@@ -27,3 +27,10 @@
 .reserv {
     margin: 20px;
 }
+
+
+.modales {
+    position: absolute;
+    margin-bottom: 100px;
+    margin-left: 10px;
+}

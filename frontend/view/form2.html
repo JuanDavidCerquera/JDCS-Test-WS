@@ -28,10 +28,10 @@
                         <p>Tipo de cabina <span id="salida-cabina">aaaa</span></p>
                     </div>
                     <div class="col head">
-                        <p>fecha <span>aaaa</span></p>
+                        <p>fecha <span id="salida-fecha">aaaa</span></p>
                     </div>
                     <div class="col head">
-                        <p>Número de vuelo <span>aaaa</span></p>
+                        <p>Número de vuelo <span id="salida-numvuel">aaaa</span></p>
                     </div>
                 </div>
             </div>
@@ -42,19 +42,19 @@
             <div class="border">
                 <div class="row ">
                     <div class="col head">
-                        <p>Origen <span>aaaa</span></p>
+                        <p>Origen <span id="retorno-origen">aaaa</span></p>
                     </div>
                     <div class="col head">
-                        <p>Destino <span>aaaa</span></p>
+                        <p>Destino <span id="retorno-destino">aaaa</span></p>
                     </div>
                     <div class="col head">
-                        <p>Tipo de cabina <span>aaaa</span></p>
+                        <p>Tipo de cabina <span id="retorno-cabina">aaaa</span></p>
                     </div>
                     <div class="col head">
-                        <p>fecha <span>aaaa</span></p>
+                        <p>fecha <span id="retorno-fecha">aaaa</span></p>
                     </div>
                     <div class="col head">
-                        <p>Número de vuelo <span>aaaa</span></p>
+                        <p>Número de vuelo <span id="retorno-numvuel">aaaa</span></p>
                     </div>
                 </div>
             </div>
@@ -64,6 +64,7 @@
         <div class="space-content ">
             <p>Datos del pasajero:</p>
             <div class="border">
+
                 <div class="row">
                     <div class="col head">
                         <label for="Nombres">Nombres</label>
@@ -75,14 +76,14 @@
                     </div>
                     <div class="col head">
                         <label for="fecha">fecha de nacimiento</label>
-                        <input type="text" id="fecha">
+                        <input type="date" id="fecha">
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col head">
                         <label for="numPassport">Número de Pasaporte</label>
-                        <input type="text" id="numPassport">
+                        <input type="number" id="numPassport">
                     </div>
                     <div class="col head">
                         <label for="countrypassport">País de Pasaporte</label>
@@ -103,7 +104,7 @@
                         <input type="file" id="Passport">
                     </div>
                     <div class="col head">
-                        <button>Agregar Pasajero</button>
+                        <button onclick="leerPasajeroInfo()">Agregar Pasajero</button>
                     </div>
                 </div>
 
@@ -114,11 +115,7 @@
                     <div class="col">
                         <p>Lista de pasajeros:</p>
                     </div>
-                    <div class="col">
-                        <input type="checkbox" id="vsalida"><label for="vsalida">Visualizacion
-                            tres días antes y
-                            después</label>
-                    </div>
+
                 </div>
 
                 <table class="table table-striped table-hover">
@@ -130,9 +127,10 @@
                             <th>Número de pasaporte</th>
                             <th>País de pasaporte</th>
                             <th>Precio de Cabina</th>
+                            <th>pasaporte</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="pasajerotabla">
                     </tbody>
                 </table>
             </div>
@@ -146,12 +144,12 @@
                     <button>Regresar a buscar vuelos</button>
                 </div>
                 <div class="col">
-                    <button>Confirmar Reserva</button>
+                    <button data-bs-toggle="modal" data-bs-target="#staticBackdrop">Confirmar Reserva</button>
                 </div>
             </div>
         </div>
 
-        <div class="modal">
+        <!-- <div class="modales border">
             <div class="row">
                 <div class="col">
                     <p>Valor Total: </p>
@@ -177,12 +175,73 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col">
+                    <button>Emitir boletos</button>
+                </div>
+                <div class="col">
+                    <button>Cancelar</button>
+                </div>
+            </div>
+        </div> -->
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col">
+                                <p>Valor Total: </p>
+                            </div>
+                            <div class="col">
+                                <span>valor</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <p>Pagar con:</p>
+                            </div>
+                            <div class="col">
+                                <div>
+                                    <input type="radio" id="tarjeta_credito" name="metodo_pago" value="tarjeta_credito"
+                                        checked>
+                                    <label for="tarjeta_credito">Tarjeta de Crédito</label>
+                                    <br>
+                                    <input type="radio" id="efectivo" name="metodo_pago" value="efectivo">
+                                    <label for="efectivo">Efectivo</label>
+                                    <br>
+                                    <input type="radio" id="comprovante-pago" name="metodo_pago"
+                                        value="comprovante-pago">
+                                    <label for="comprovante-pago">Comprovante de pago</label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary">Emitir boletos</button>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
 
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-    <script type="application/javascript" src="/js/form2.js"> </script>
-    <script>loadVueloSalida()</script>
+        <script type="application/javascript" src="/js/form2.js"> </script>
+        <script>loadVueloSalida()
+            loadVueloRetorno()
+        </script>
 </body>
 
 </html>
