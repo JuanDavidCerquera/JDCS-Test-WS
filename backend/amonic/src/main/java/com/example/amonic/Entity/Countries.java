@@ -6,10 +6,10 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "countries")
-public class Countries extends ABaseEntity{
+public class Countries extends ABaseEntity {
 
-	  @Column(name = "name", nullable = false)
-	    private String name;
+	@Column(name = "name", nullable = false)
+	private String name;
 
 	public String getName() {
 		return name;
@@ -18,6 +18,5 @@ public class Countries extends ABaseEntity{
 	public void setName(String name) {
 		this.name = name;
 	}
-	  
-	  
+
 }

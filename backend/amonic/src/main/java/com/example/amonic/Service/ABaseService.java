@@ -12,7 +12,7 @@ import com.example.amonic.IService.IBaseService;
 public abstract class ABaseService<T extends ABaseEntity> implements IBaseService<T> {
 
 	protected abstract IBaseRepository<T, Long> getRepository();
-	
+
 	@Override
 	public List<T> all() throws Exception {
 		return getRepository().findAll();
@@ -21,7 +21,7 @@ public abstract class ABaseService<T extends ABaseEntity> implements IBaseServic
 	@Override
 	public Optional<T> findById(Long id) throws Exception {
 		Optional<T> te = getRepository().findById(id);
-		if(te.isEmpty()) {
+		if (te.isEmpty()) {
 			throw new Exception("registro no encontrado");
 		}
 		return te;
@@ -32,26 +32,31 @@ public abstract class ABaseService<T extends ABaseEntity> implements IBaseServic
 		try {
 			return getRepository().save(entity);
 		} catch (Exception e) {
-			throw new Exception("no se pudo guardar");		
+			throw new Exception("no se pudo guardar");
 		}
 	}
 
 	@Override
 	public void update(Long id, T entity) throws Exception {
 		Optional<T> te = getRepository().findById(id);
-		if(te.isEmpty()) {
+		if (te.isEmpty()) {
 			throw new Exception("registro no encontrado");
 		}
 		T EntityUpdate = te.get();
-		String[] ignoreProperties = {"id"};
-		BeanUtils.copyProperties(entity, EntityUpdate,ignoreProperties);
-		
+		String[] ignoreProperties = { "id" };
+		BeanUtils.copyProperties(entity, EntityUpdate, ignoreProperties);
+
 		getRepository().save(EntityUpdate);
 	}
 
 	@Override
 	public void delete(Long id) throws Exception {
 		getRepository().deleteById(id);
+	}
+	
+	@Override
+	public List<T> getByFilter(T entity) {
+		return null;
 	}
 
 }

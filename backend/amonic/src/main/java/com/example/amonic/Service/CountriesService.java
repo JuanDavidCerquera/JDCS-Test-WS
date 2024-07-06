@@ -13,7 +13,7 @@ import com.example.amonic.IRepository.ICountriesRepository;
 import com.example.amonic.IService.ICountriesService;
 
 @Service
-public class CountriesService extends ABaseService<Countries> implements ICountriesService{
+public class CountriesService extends ABaseService<Countries> implements ICountriesService {
 
 	@Override
 	protected IBaseRepository<Countries, Long> getRepository() {
@@ -23,15 +23,18 @@ public class CountriesService extends ABaseService<Countries> implements ICountr
 	@Autowired
 	private ICountriesRepository repo;
 
-	
 	@Override
 	public List<FlightDto> getflightfilter(String origen, String destino, LocalDate salida, LocalDate llegada) {
-		return repo.getflightfilter(origen,  destino,  salida,  llegada);
+		return repo.getflightfilter(origen, destino, salida, llegada);
 	}
 
+	@Override
+	public List<FlightDto> getflight(Long id) {
+		return repo.getflight(id);
+	}
 
 	@Override
-	public List<FlightDto> getflight( Long id) {
-		return repo.getflight(id);
+	public List<FlightDto> getflightfilterOptional(String origen, String destino, LocalDate salida, LocalDate llegada) {
+		return repo.getflightfilterOptional(origen, destino, salida, llegada);
 	}
 }

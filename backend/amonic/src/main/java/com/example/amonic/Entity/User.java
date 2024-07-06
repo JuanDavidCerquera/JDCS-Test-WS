@@ -1,6 +1,5 @@
 package com.example.amonic.Entity;
 
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -10,8 +9,8 @@ import jakarta.persistence.Table;
 
 @Table
 @Entity(name = "user")
-public class User extends ABaseEntity{
-	
+public class User extends ABaseEntity {
+
 	@Column(name = "email", nullable = false)
 	private String email;
 
@@ -29,15 +28,15 @@ public class User extends ABaseEntity{
 
 	@Column(name = "state", nullable = false)
 	private String state;
-	
-	   @ManyToOne(fetch = FetchType.EAGER, optional = false )
-	    @JoinColumn(name = "role_id", nullable = false)
-	    private Roles rolesId;
-	   
-	   @ManyToOne(fetch = FetchType.EAGER, optional = false )
-	    @JoinColumn(name = "office_id", nullable = false)
-	    private Offices officeId;
- 
+
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
+	@JoinColumn(name = "role_id", nullable = false)
+	private Roles rolesId;
+
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
+	@JoinColumn(name = "office_id", nullable = false)
+	private Offices officeId;
+
 	public Roles getRolesId() {
 		return rolesId;
 	}

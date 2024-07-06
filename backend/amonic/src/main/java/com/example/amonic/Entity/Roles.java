@@ -6,8 +6,8 @@ import jakarta.persistence.Table;
 
 @Table
 @Entity(name = "roles")
-public class Roles extends ABaseEntity{
-	
+public class Roles extends ABaseEntity {
+
 	@Column(name = "title", nullable = false)
 	private String title;
 
@@ -18,7 +18,5 @@ public class Roles extends ABaseEntity{
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	
-	
 
 }

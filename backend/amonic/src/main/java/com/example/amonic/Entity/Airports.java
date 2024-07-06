@@ -9,17 +9,16 @@ import jakarta.persistence.Table;
 
 @Table
 @Entity(name = "airports")
-public class Airports extends ABaseEntity{
-	  @Column(name = "iata_code", nullable = false)
-	    private String iataCode;
-	  
-	  @Column(name = "name", nullable = false)
-	    private String name;
+public class Airports extends ABaseEntity {
+	@Column(name = "iata_code", nullable = false)
+	private String iataCode;
 
-	   @ManyToOne(fetch = FetchType.EAGER, optional = false )
-	    @JoinColumn(name = "country_id", nullable = false)
-	    private Countries country;
+	@Column(name = "name", nullable = false)
+	private String name;
 
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
+	@JoinColumn(name = "country_id", nullable = false)
+	private Countries country;
 
 	public String getIataCode() {
 		return iataCode;
@@ -43,5 +42,5 @@ public class Airports extends ABaseEntity{
 
 	public void setCountry(Countries country) {
 		this.country = country;
-	}  
+	}
 }

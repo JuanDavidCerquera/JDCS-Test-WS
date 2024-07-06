@@ -5,9 +5,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name ="cabinTypes")
-public class CabinTypes extends ABaseEntity{
-	
+@Table(name = "cabinTypes")
+public class CabinTypes extends ABaseEntity {
+
 	@Column(name = "name", nullable = false)
 	private String name;
 

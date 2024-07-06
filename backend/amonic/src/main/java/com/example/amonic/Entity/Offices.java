@@ -9,20 +9,20 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "offices")
-public class Offices extends ABaseEntity{
+public class Offices extends ABaseEntity {
 
-    @Column(name = "title", nullable = false)
-    private String title;
+	@Column(name = "title", nullable = false)
+	private String title;
 
-    @Column(name = "phone", nullable = false)
-    private Long phone;
+	@Column(name = "phone", nullable = false)
+	private Long phone;
 
-    @Column(name = "contact", nullable = false)
-    private String contact;
+	@Column(name = "contact", nullable = false)
+	private String contact;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "countries_id", nullable = false)
-    private Countries country;
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
+	@JoinColumn(name = "countries_id", nullable = false)
+	private Countries country;
 
 	public String getTitle() {
 		return title;
@@ -55,8 +55,5 @@ public class Offices extends ABaseEntity{
 	public void setCountry(Countries country) {
 		this.country = country;
 	}
-
-	  
-
 
 }

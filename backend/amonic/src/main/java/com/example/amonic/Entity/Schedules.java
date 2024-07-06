@@ -12,30 +12,30 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "schedules")
-public class Schedules extends ABaseEntity{
+public class Schedules extends ABaseEntity {
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "aircraft_id", nullable = false)
-    private Aircrafts aircraft;
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
+	@JoinColumn(name = "aircraft_id", nullable = false)
+	private Aircrafts aircraft;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "route_id", nullable = false)
-    private Routes route;
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
+	@JoinColumn(name = "route_id", nullable = false)
+	private Routes route;
 
-    @Column(name = "date", nullable = false)
-    private LocalDate date;
+	@Column(name = "date", nullable = false)
+	private LocalDate date;
 
-    @Column(name = "time", nullable = false)
-    private LocalTime time;
+	@Column(name = "time", nullable = false)
+	private LocalTime time;
 
-    @Column(name = "economy_price", nullable = false)
-    private Double economyPrice;
+	@Column(name = "economy_price", nullable = false)
+	private Double economyPrice;
 
-    @Column(name = "confirmed", nullable = false)
-    private Boolean confirmed;
+	@Column(name = "confirmed", nullable = false)
+	private Boolean confirmed;
 
-    @Column(name = "flight_number", nullable = false)
-    private int flightNumber;
+	@Column(name = "flight_number", nullable = false)
+	private int flightNumber;
 
 	public Aircrafts getAircraft() {
 		return aircraft;
@@ -92,6 +92,5 @@ public class Schedules extends ABaseEntity{
 	public void setFlightNumber(int flightNumber) {
 		this.flightNumber = flightNumber;
 	}
-    
-    
+
 }

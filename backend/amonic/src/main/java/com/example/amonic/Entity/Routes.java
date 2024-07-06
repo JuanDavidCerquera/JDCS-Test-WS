@@ -9,21 +9,21 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "routes")
-public class Routes  extends ABaseEntity{
+public class Routes extends ABaseEntity {
 
-	   @ManyToOne(fetch = FetchType.EAGER, optional = false )
-	    @JoinColumn(name = "departure_airports_id", nullable = false)
-	    private Airports departureAirportsId;
-	   
-	   @ManyToOne(fetch = FetchType.EAGER, optional = false )
-	    @JoinColumn(name = "arrival_airports_id", nullable = false)
-	    private Airports arrivalAirportsId;
-	   
-	   @Column(name = "distance", nullable = false)
-	    private Double distance;
-	   
-	   @Column(name = "flight_time", nullable = false)
-	    private Double flightTime;
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
+	@JoinColumn(name = "departure_airports_id", nullable = false)
+	private Airports departureAirportsId;
+
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
+	@JoinColumn(name = "arrival_airports_id", nullable = false)
+	private Airports arrivalAirportsId;
+
+	@Column(name = "distance", nullable = false)
+	private Double distance;
+
+	@Column(name = "flight_time", nullable = false)
+	private Double flightTime;
 
 	public Airports getDepartureAirportsId() {
 		return departureAirportsId;
@@ -57,5 +57,4 @@ public class Routes  extends ABaseEntity{
 		this.flightTime = flightTime;
 	}
 
-	
 }

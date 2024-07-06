@@ -13,30 +13,43 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.amonic.DTO.FlightDto;
 import com.example.amonic.DTO.ResponseDto;
-import com.example.amonic.DTO.flight;
 import com.example.amonic.DTO.paramFlicht;
 import com.example.amonic.Entity.Countries;
 import com.example.amonic.IService.ICountriesService;
 
-@CrossOrigin(origins= "*")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("1v/api/countries")
-public class CountriesController extends ABaseController<Countries, ICountriesService>{
+public class CountriesController extends ABaseController<Countries, ICountriesService> {
 
 	protected CountriesController(ICountriesService service) {
 		super(service, "countries");
 	}
 
 	@PostMapping("/flight/filter")
-	private ResponseEntity<ResponseDto<List<FlightDto>>> getflightfilter(@RequestBody paramFlicht filter){
+	private ResponseEntity<ResponseDto<List<FlightDto>>> getflightfilter(@RequestBody paramFlicht filter) {
 		try {
-			return ResponseEntity.ok(new ResponseDto<List<FlightDto>>("datos obtenidos", service.getflightfilter(filter.getOrigen(), filter.getDestino(), filter.getSalida(),filter.getLlegada()), true));
+			return ResponseEntity
+					.ok(new ResponseDto<List<FlightDto>>("datos obtenidos", service.getflightfilter(filter.getOrigen(),
+							filter.getDestino(), filter.getSalida(), filter.getLlegada()), true));
 		} catch (Exception e) {
 			return ResponseEntity.internalServerError().body(new ResponseDto<>(e.getMessage(), null, null));
 		}
 	}
+
+	@PostMapping("/flight/filter/Optional")
+	private ResponseEntity<ResponseDto<List<FlightDto>>> getflightfilterOptional(@RequestBody paramFlicht filter) {
+		try {
+			return ResponseEntity
+					.ok(new ResponseDto<List<FlightDto>>("datos obtenidos", service.getflightfilterOptional(
+							filter.getOrigen(), filter.getDestino(), filter.getSalida(), filter.getLlegada()), true));
+		} catch (Exception e) {
+			return ResponseEntity.internalServerError().body(new ResponseDto<>(e.getMessage(), null, null));
+		}
+	}
+
 	@GetMapping("/flight/{id}")
-	private ResponseEntity<ResponseDto<List<FlightDto>>> getFlight(@PathVariable Long id){
+	private ResponseEntity<ResponseDto<List<FlightDto>>> getFlight(@PathVariable Long id) {
 		try {
 			return ResponseEntity.ok(new ResponseDto<List<FlightDto>>("datos obtenidos", service.getflight(id), true));
 		} catch (Exception e) {

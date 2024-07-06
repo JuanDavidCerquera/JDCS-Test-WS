@@ -9,49 +9,49 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "tickets")
-public class Tickets extends ABaseEntity{
+public class Tickets extends ABaseEntity {
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "cabin_types_id", nullable = false)
-    private CabinTypes cabinType;
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
+	@JoinColumn(name = "cabin_types_id", nullable = false)
+	private CabinTypes cabinType;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "schedule_id", nullable = false)
-    private Schedules schedule;
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
+	@JoinColumn(name = "schedule_id", nullable = false)
+	private Schedules schedule;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
+	@JoinColumn(name = "user_id", nullable = false)
+	private User user;
 
-    @Column(name = "distance", nullable = false)
-    private Double distance;
+	@Column(name = "distance", nullable = false)
+	private Double distance;
 
-    @Column(name = "first_name", nullable = false)
-    private String firstName;
+	@Column(name = "first_name", nullable = false)
+	private String firstName;
 
-    @Column(name = "last_name", nullable = false)
-    private String lastName;
+	@Column(name = "last_name", nullable = false)
+	private String lastName;
 
-    @Column(name = "email", nullable = false)
-    private String email;
+	@Column(name = "email", nullable = false)
+	private String email;
 
-    @Column(name = "phone", nullable = false)
-    private Long phone;
+	@Column(name = "phone", nullable = false)
+	private Long phone;
 
-    @Column(name = "passport_number", nullable = false)
-    private Long passportNumber;
+	@Column(name = "passport_number", nullable = false)
+	private Long passportNumber;
 
-    @Column(name = "passport_country_id", nullable = false)
-    private Long passportCountryId;
+	@Column(name = "passport_country_id", nullable = false)
+	private Long passportCountryId;
 
-    @Column(name = "passport_photo", nullable = false)
-    private Long passportPhoto;
+	@Column(name = "passport_photo", nullable = false)
+	private Long passportPhoto;
 
-    @Column(name = "booking_reference", nullable = false)
-    private Long bookingReference;
+	@Column(name = "booking_reference", nullable = false)
+	private Long bookingReference;
 
-    @Column(name = "confirmed", nullable = false)
-    private Boolean confirmed;
+	@Column(name = "confirmed", nullable = false)
+	private Boolean confirmed;
 
 	public CabinTypes getCabinType() {
 		return cabinType;
@@ -156,7 +156,5 @@ public class Tickets extends ABaseEntity{
 	public void setConfirmed(Boolean confirmed) {
 		this.confirmed = confirmed;
 	}
-    
-    
 
 }

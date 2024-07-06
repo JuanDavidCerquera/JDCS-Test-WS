@@ -1,14 +1,14 @@
 package com.example.amonic.DTO;
 
 public class ResponseDto<T> {
-	
+
 	private Boolean status;
 	private T data;
 	private String message;
-	
+
 	public ResponseDto(String message, T data, Boolean status) {
 		this.data = data;
-		this.message =message;
+		this.message = message;
 		this.status = status;
 	}
 
@@ -36,6 +36,4 @@ public class ResponseDto<T> {
 		this.message = message;
 	}
 
-	
-	
 }

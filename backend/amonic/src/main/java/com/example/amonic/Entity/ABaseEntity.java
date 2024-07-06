@@ -6,7 +6,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 
 @MappedSuperclass
-public class ABaseEntity{
+public class ABaseEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +19,5 @@ public class ABaseEntity{
 	public void setId(long id) {
 		this.id = id;
 	}
-	
-	
-	
+
 }

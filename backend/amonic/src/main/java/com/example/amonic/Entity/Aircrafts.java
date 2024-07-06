@@ -11,7 +11,7 @@ public class Aircrafts extends ABaseEntity {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "makemodel", nullable = false)
+    @Column(name = "make_model", nullable = false)
     private String makeModel;
 
     @Column(name = "total_seats", nullable = false)
@@ -23,7 +23,6 @@ public class Aircrafts extends ABaseEntity {
     @Column(name = "business_seats", nullable = false)
     private int businessSeats;
 
- 
     public String getName() {
         return name;
     }

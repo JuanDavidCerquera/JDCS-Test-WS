@@ -19,18 +19,16 @@
             <div class="row ">
                 <div class="col head">
                     <label for="origen">Origen</label>
-                    <select id="origen">
-                        <option value="1">CAI</option>
-                        <option value="2">DOU</option>
-                        <!-- <option value="3">HUI</option> -->
+                    <input type="text" id="origen">
+
+                    <!-- <option value="3">HUI</option> -->
                     </select>
                 </div>
                 <div class="col head">
                     <label for="destino">Destino</label>
-                    <select id="destino">
-                        <option value="1">CAI</option>
-                        <option value="2">DOU</option>
-                        <!-- <option value="3">HUI</option> -->
+                    <input type="text" id="destino">
+
+                    <!-- <option value="3">HUI</option> -->
                     </select>
                 </div>
                 <div class="col head">
@@ -62,7 +60,7 @@
                 </div>
             </div>
             <div class="button">
-                <button class="btn btn-success" onclick="loadData()">Aplicar</button>
+                <button class="btn btn-success" onclick="callLoadData()">Aplicar</button>
             </div>
         </div>
 
@@ -72,7 +70,7 @@
                     <p>Detalles de vuelos de salida:</p>
                 </div>
                 <div class="col">
-                    <input type="checkbox" id="vsalida" onchange="loadData()"><label for="vsalida">Visualizacion
+                    <input type="checkbox" id="vsalida" onchange="callLoadData()"><label for="vsalida">Visualizacion
                         tres días antes y
                         después</label>
                 </div>
@@ -101,7 +99,7 @@
                     <p>Detalles de vuelos de regreso:</p>
                 </div>
                 <div class="col">
-                    <input type="checkbox" id="vretorno" onchange="loadData()"><label for="vretorno">Visualizacion
+                    <input type="checkbox" id="vretorno" onchange="callLoadData()"><label for="vretorno">Visualizacion
                         tres días antes y
                         después</label>
                 </div>
@@ -137,17 +135,21 @@
                 </div>
                 <button class="btn btn-danger">Salir</button>
             </div>
-
-
         </div>
     </div>
 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css">
 
 
     <script type="application/javascript" src="/js/form1.js"></script>
-    <script>loadData()</script>
+    <script>callLoadData()
+        loadAirport()
+        refresacarData()
+        autoComplete()
+    </script>
 </body>
 
 </html>
