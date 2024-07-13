@@ -34,3 +34,8 @@
     margin-bottom: 100px;
     margin-left: 10px;
 }
+
+#imagen {
+    width: 460px;
+    object-fit: cover;
+}

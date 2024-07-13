@@ -16,7 +16,7 @@ public class AmonicApplication implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
-    	Thread.sleep(5000);
+    	Thread.sleep(1000);
 
         String swaggerUrl = "http://localhost:9000/Session3/swagger-ui/index.html";
         openBrowser(swaggerUrl);
